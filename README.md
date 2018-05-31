@@ -1,4 +1,5 @@
 [![](https://badge.imagelayers.io/frenchben/nmap:latest.svg)](https://imagelayers.io/?images=frenchben/nmap:latest 'Get your own badge on imagelayers.io')
+[![](https://images.microbadger.com/badges/version/frenchben/nmap.svg)](https://microbadger.com/images/frenchben/nmap "Get your own version badge on microbadger.com")
 
 # frenchben/nmap
 
