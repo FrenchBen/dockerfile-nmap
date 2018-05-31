@@ -1,8 +1,9 @@
-[![](https://badge.imagelayers.io/uzyexe/nmap:latest.svg)](https://imagelayers.io/?images=uzyexe/nmap:latest 'Get your own badge on imagelayers.io')
+[![](https://badge.imagelayers.io/frenchben/nmap:latest.svg)](https://imagelayers.io/?images=frenchben/nmap:latest 'Get your own badge on imagelayers.io')
 
-# uzyexe/nmap
+# frenchben/nmap
 
-This is nmap container.
+This is an nmap container, based on the uzyexe/nmap container, but using Ubuntu as the base (instead of busybox). 
+Busybox nmap didn't support options, such as `--script`
 
 ## What is nmap
 
@@ -12,33 +13,34 @@ Nmap ("Network Mapper") is a free and open source (license) utility for network 
 
 ## Dockerfile
 
-[**Trusted Build**](https://registry.hub.docker.com/u/uzyexe/nmap/)
+[**Trusted Build**](https://registry.hub.docker.com/u/frenchben/nmap/)
 
-This Docker image is based on the [progrium/busybox](https://registry.hub.docker.com/u/progrium/busybox/) base image.
+This Docker image is based on the official [ubuntu](https://hub.docker.com/_/ubuntu/) base image.
 
 ## How to use this image
 
 ```
-docker run --rm -v "$(pwd)":/data uzyexe/nmap [Scan Type(s)] [Options] {target specification}
+docker run --rm -v "$(pwd)":/data frenchben/nmap [Scan Type(s)] [Options] {target specification}
 ```
 
 ### Case 1: Simple Scan
 
 ```
-docker run --rm uzyexe/nmap example.com
+docker run --rm frenchben/nmap example.com
 ```
 
 ### Case 2 : Port-80 Simple Scan
 
 ```
-docker run --rm uzyexe/nmap -p 80 example.com
+docker run --rm frenchben/nmap -p 80 example.com
 ```
 
 ### Help
 
 ```
-Nmap 7.12 ( https://nmap.org )
-Usage: docker run --rm uzyexe/nmap [Scan Type(s)] [Options] {target specification}
+Nmap 7.60 ( https://nmap.org )
+Usage: docker run --rm frenchben/nmap [Scan Type(s)] [Options] {target specification}
+Usage: nmap [Scan Type(s)] [Options] {target specification}
 TARGET SPECIFICATION:
   Can pass hostnames, IP addresses, networks, etc.
   Ex: scanme.nmap.org, microsoft.com/24, 192.168.0.1; 10.0.0-255.1-254
@@ -80,6 +82,17 @@ SERVICE/VERSION DETECTION:
   --version-light: Limit to most likely probes (intensity 2)
   --version-all: Try every single probe (intensity 9)
   --version-trace: Show detailed version scan activity (for debugging)
+SCRIPT SCAN:
+  -sC: equivalent to --script=default
+  --script=<Lua scripts>: <Lua scripts> is a comma separated list of
+           directories, script-files or script-categories
+  --script-args=<n1=v1,[n2=v2,...]>: provide arguments to scripts
+  --script-args-file=filename: provide NSE script args in a file
+  --script-trace: Show all data sent and received
+  --script-updatedb: Update the script database.
+  --script-help=<Lua scripts>: Show help about scripts.
+           <Lua scripts> is a comma-separated list of script-files or
+           script-categories.
 OS DETECTION:
   -O: Enable OS detection
   --osscan-limit: Limit OS detection to promising targets
